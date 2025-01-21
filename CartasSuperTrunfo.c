@@ -6,7 +6,7 @@ int main(){
     printf("Desafio de cartas Super Trunfo!\n");
 
     float populacao, pib, area;
-    int codigocarta[7], pontosturisticos;
+    int codigocarta, pontosturisticos;
     char nome[60], estado[60];
     char opcao;
 
@@ -28,9 +28,9 @@ do {
     scanf(" %f", &area);
     
 
-    printf("Este é o resumo da carta cadastrada! \n");
+    printf("Resumo da carta cadastrada! \n");
     printf("Estado: %s \n", estado);
-    printf("Código da Carta: %d \n", codigocarta);
+    printf("Codigo da Carta: %d \n", codigocarta);
     printf("Nome da cidade: %s \n", nome);
     printf("Populacao: %.2f \n", populacao);
     printf("Area em km quadrados: %.1f \n", area);
