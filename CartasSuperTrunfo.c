@@ -1,48 +1,71 @@
-#include <stdio.h>
+// Version 1.001
+// importando bibliotecas fundamentais para o funcionamento do código
+#include <stdio.h> 
+#include <stdlib.h> // alocação de memória dinâmica malloc, free, exit, etc
+#include <string.h> // para manipulaçao de strings strlen, strcpy, strcmp, etc
+#include <stdbool.h>
 
 
 int main(){
+    // Variáveis para armazenar os atributos da cidade
+    float population, pib, area, population_density, pib_per_capita, superpower; 
+    int cardcode, turisticpoints;
+    char name[60], state;
+    char opcao;
+
     printf("SEJA BEM VINDO!\n");
     printf("Desafio de cartas Super Trunfo!\n");
 
-    float populacao, pib, area;
-    int codigocarta, pontosturisticos;
-    char nome[60], estado[60];
-    char opcao;
-
 do {
+    // Solicitando ao usuário que insira as informações da cidade
     printf("Digite o nome de uma cidade para cadastra-la no jogo:\n");
-    fgets(nome, sizeof(nome), stdin);
+    // Solicita o nome da cidade com o tamanho total de 60 caracteres que podem ser adicionados na variável name
+    fgets(name, sizeof(name), stdin);
 
-    printf("A qual estado ela pertence? \n");
-    fgets(estado, sizeof(estado), stdin);
+    // Solicitando ao usuário que insira uma letra para designar ao código da carta
+    printf("Escolha uma letra entre A-H para representar o estado \n");
+    scanf(" %c", &state);
+    getchar(); // Limpa o buffer do teclado
+
+    printf("Quantos pontos turisticos essa cidade possui? \n ");
+    scanf(" %d", &turisticpoints);
 
 
-    printf("Agora digite o codigo da carta (6 digitos), e a quantia de pontos turisticos: \n ");
-    scanf(" %d %d", &codigocarta, &pontosturisticos);
+    printf("Digite o numero da cidade (1-4): \n ");
+    scanf(" %d", &cardcode);
 
-    printf("Desta vez preciraremos cadastrar o pib e a populacao, respectivamente: \n ");
-    scanf(" %f %f", &pib, &populacao);
+    printf("Desta vez preciraremos cadastrar o pib.\n ");
+    scanf(" %f", &pib);
+
+    printf("O numero de habitantes: \n ");
+    scanf(" %f", &population);
 
     printf("Para finalizar, cadastraremos a area em km quadrados: \n ");
     scanf(" %f", &area);
     
 
+    // Calculo da densidade populacional
+    population_density = population / area;
+    pib_per_capita = pib / population;
+
+    // SUPER PODER = soma de todas as propriedades
+    superpower = population + pib + area + population_density + pib_per_capita + turisticpoints;
+
+
     printf("Resumo da carta cadastrada! \n");
-    printf("Estado: %s \n", estado);
-    printf("Codigo da Carta: %d \n", codigocarta);
-    printf("Nome da cidade: %s \n", nome);
-    printf("Populacao: %.2f \n", populacao);
+    printf("Codigo da Carta: %c%02d \n", state, cardcode);
+    printf("Nome da cidade: %s \n", name);
+    printf("Numero de pontos turisticos: %d \n", turisticpoints);
+    printf("Populacao: %.2f \n", population);
     printf("Area em km quadrados: %.1f \n", area);
     printf("PIB: %.2f \n", pib);
-    printf("Numero de pontos turisticos: %d \n", pontosturisticos);
+    printf("Densidade Populacional: %.2f \n", population_density);
+    printf("PIB per capita: %.2f \n", pib_per_capita);
     
-    printf("Deseja salvar a carta em Super Trunfo Cidades \n e voltar ao menu principal? (s/n)");
+    printf("Deseja salvar a carta em Super Trunfo Cidades \n " "e voltar ao menu principal? (s/n) ");
     scanf(" %c", opcao);
     
-} while(opcao == 's' || opcao == 'S' );
+} while(opcao == 's' || opcao == 'S' ); // Repete o processo se a opção for 's' ou 'S'
 
 return 0;
-
-
 }
