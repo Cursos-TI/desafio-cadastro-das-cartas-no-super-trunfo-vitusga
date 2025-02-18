@@ -1,4 +1,4 @@
-// Version 1.001
+// Version 1.002
 // importando bibliotecas fundamentais para o funcionamento do código
 #include <stdio.h> 
 #include <stdlib.h> // alocação de memória dinâmica malloc, free, exit, etc
@@ -11,11 +11,10 @@ int main(){
     float population, pib, area, population_density, pib_per_capita, superpower; 
     int cardcode, turisticpoints;
     char name[60], state;
-    char opcao;
+    char option;
 
     printf("SEJA BEM VINDO!\n");
     printf("Desafio de cartas Super Trunfo!\n");
-
 do {
     // Solicitando ao usuário que insira as informações da cidade
     printf("Digite o nome de uma cidade para cadastra-la no jogo:\n");
@@ -26,22 +25,22 @@ do {
     printf("Escolha uma letra entre A-H para representar o estado \n");
     scanf(" %c", &state);
     getchar(); // Limpa o buffer do teclado
-
-    printf("Quantos pontos turisticos essa cidade possui? \n ");
-    scanf(" %d", &turisticpoints);
-
-
+    
     printf("Digite o numero da cidade (1-4): \n ");
     scanf(" %d", &cardcode);
 
-    printf("Desta vez preciraremos cadastrar o pib.\n ");
-    scanf(" %f", &pib);
+    printf("Quantos pontos turisticos essa cidade possui? \n ");
+    scanf(" %d", &turisticpoints);
 
     printf("O numero de habitantes: \n ");
     scanf(" %f", &population);
 
     printf("Para finalizar, cadastraremos a area em km quadrados: \n ");
     scanf(" %f", &area);
+
+    printf("Desta vez preciraremos cadastrar o pib.\n ");
+    scanf(" %f", &pib);
+
     
 
     // Calculo da densidade populacional
@@ -62,10 +61,25 @@ do {
     printf("Densidade Populacional: %.2f \n", population_density);
     printf("PIB per capita: %.2f \n", pib_per_capita);
     
-    printf("Deseja salvar a carta em Super Trunfo Cidades \n " "e voltar ao menu principal? (s/n) ");
-    scanf(" %c", opcao);
+    printf("Deseja salvar a carta em Super Trunfo Cidades \n " "e voltar ao menu principal? (s/n) "); 
+    scanf(" %c", &option);
+    getchar();    
+    switch(option) { // aplicando o loop switch para as opções de salvar ou descartar a carta
+        case 's':
+        case 'S':
+            printf("Carta salva com sucesso! \n");
+            break;
+        case 'n':
+        case 'N':
+            printf("Carta descartada! \n");
+            break;
+        default:
+            printf("Opção inválida! Fechando programa! =] \n");
+            return 0;
+    }
     
-} while(opcao == 's' || opcao == 'S' ); // Repete o processo se a opção for 's' ou 'S'
+} while(option == 's' || option == 'S');  // Repete o processo se a opção for 's' ou 'S'
 
 return 0;
+
 }
